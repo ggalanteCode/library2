@@ -2,6 +2,8 @@ package com.corsojava.library.service;
 
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,11 @@ public class UserService {
 	
 	public Optional<User> findById(int userId) {
 		return userRepository.findById(userId);
+	}
+	
+	@Transactional
+	public User create(User user) {
+		return userRepository.save(user);
 	}
 
 }
