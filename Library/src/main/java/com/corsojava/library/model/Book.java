@@ -39,7 +39,7 @@ public class Book {
 	private String genres;
 	
 	@PositiveOrZero(message = "Available copies must be positive or zero")
-	private int AvailableCopies;
+	private int availableCopies;
 	
 	@ManyToMany	
 	@JsonBackReference(value = "authorsList")
@@ -98,11 +98,11 @@ public class Book {
 	}
 
 	public int getAvailableCopies() {
-		return AvailableCopies;
+		return availableCopies;
 	}
 
 	public void setAvailableCopies(int availableCopies) {
-		AvailableCopies = availableCopies;
+		this.availableCopies = availableCopies;
 	}
 
 	public List<Author> getAuthors() {

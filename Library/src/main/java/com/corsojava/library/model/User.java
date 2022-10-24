@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -30,6 +31,11 @@ public class User {
 	private String email;
 	@NotNull(message = "must be not null")
 	private String phoneNumber;
+	
+	@NotNull(message = "must be not null")
+	@Pattern(regexp = "^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?!.*\\s).{6,}$",
+			 message = "the password must have minimum 6 chars, at least 1 UPPERCASE, 1 lowercase and 1 digit")
+	private String password;
 	
 	@OneToMany(mappedBy = "user")
 	@JsonBackReference	
@@ -89,6 +95,14 @@ public class User {
 
 	public void setBorrowings(List<Borrowing> borrowings) {
 		this.borrowings = borrowings;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	

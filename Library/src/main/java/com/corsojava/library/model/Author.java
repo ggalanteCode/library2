@@ -28,7 +28,7 @@ public class Author {
 	private LocalDate birthDate;
 	@PastOrPresent(message = "deathDate must be in the past or in the present")
 	private LocalDate deathDate;
-	private String Nationality;
+	private String nationality;
 	
 	@ManyToMany(mappedBy = "authors")		//nome della lista su Book
 	@JsonManagedReference	
@@ -76,11 +76,11 @@ public class Author {
 	}
 
 	public String getNationality() {
-		return Nationality;
+		return nationality;
 	}
 
 	public void setNationality(String nationality) {
-		Nationality = nationality;
+		this.nationality = nationality;
 	}
 
 	public List<Book> getBooks() {
